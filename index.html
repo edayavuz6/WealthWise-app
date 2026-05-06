@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WealthWise | Personal Finance Tracking</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="app.css" />
+  </head>
+  <body class="dark-theme">
+    <nav class="navbar">
+      <div class="logo">
+        <i class="fa-solid fa-chart-line"></i>
+        <span>WealthWise</span>
+      </div>
+      <div class="nav-actions">
+        <button id="theme-toggle" class="btn-icon">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+        <button id="export-btn" class="btn-primary">
+          <i class="fa-solid fa-download"></i> Export
+        </button>
+      </div>
+    </nav>
+
+    <main class="container">
+      <section class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-info">
+            <p>Total Revenue</p>
+            <h2 id="total-wealth">$0,00</h2>
+          </div>
+          <div class="stat-icon green"><i class="fa-solid fa-wallet"></i></div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-info">
+            <p>Total Expenses</p>
+            <h2 id="budget-goal">$0,00</h2>
+          </div>
+          <div class="stat-icon blue"><i class="fa-solid fa-bullseye"></i></div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-info">
+            <p>Net Balance</p>
+            <h2 id="remaining-money">$0,00</h2>
+          </div>
+          <div class="stat-icon orange">
+            <i class="fa-solid fa-scale-balanced"></i>
+          </div>
+        </div>
+      </section>
+
+      <section class="dashboard-grid">
+        <div class="charts-section">
+          <div class="chart-box">
+            <h3>Expense Allocation</h3>
+            <canvas id="expenseChart"></canvas>
+          </div>
+          <div class="chart-box">
+            <h3>6 Month Trend</h3>
+            <canvas id="trendChart"></canvas>
+          </div>
+        </div>
+
+        <div class="action-section">
+          <div class="form-card">
+            <h3><i class="fa-solid fa-plus"></i>Add transaction</h3>
+            <form id="transaction-form">
+              <div class="input-group">
+                <label>Type</label>
+                <select id="type" required>
+                  <option value="income">💰 Income</option>
+                  <option value="expense">💸 Expenses</option>
+                </select>
+              </div>
+              <div class="input-group">
+                <label>Amount ($)</label>
+                <input
+                  type="number"
+                  id="amount"
+                  placeholder="0.00"
+                  min="0"
+                  step="0.01"
+                  required
+                />
+              </div>
+              <div class="input-group">
+                <label>Category</label>
+                <select id="category" required>
+                  <option value="Salary">Salary</option>
+                  <option value="Rental">Rental income</option>
+                  <option value="Housing">Housing & Rent</option>
+                  <option value="Food">Food & Restaurants</option>
+                  <option value="Transportation">Transportation</option>
+                  <option value="Entertainment">Entertainment</option>
+                  <option value="Shopping">Shopping</option>
+                  <option value="Bills">Bills</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+              <div class="input-group">
+                <label>Description</label>
+                <input
+                  type="text"
+                  id="description"
+                  placeholder="Opsiyonel not..."
+                />
+              </div>
+              <div class="input-group">
+                <label>Date</label>
+                <input
+                  type="text"
+                  id="date"
+                  placeholder="mm-dd-yyyy"
+                  pattern="\d{2}-\d{2}-\d{4}"
+                  required
+                />
+              </div>
+              <button type="submit" class="btn-submit">Add Record</button>
+            </form>
+          </div>
+
+          <div class="insight-card">
+            <h3><i class="fa-solid fa-lightbulb"></i> Smart Analysis</h3>
+            <div id="insight-content">
+              <p>Use the form to submit a request.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="history-section">
+        <div class="history-header">
+          <h3>Recent Transactions</h3>
+          <div class="filter-group">
+            <input
+              type="text"
+              id="search"
+              placeholder="Search for a transaction..."
+            />
+          </div>
+        </div>
+        <div class="table-container">
+          <table id="transaction-table">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Category</th>
+                <th>Description</th>
+                <th>Amount</th>
+                <th>Transaction</th>
+              </tr>
+            </thead>
+            <tbody id="transaction-list"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
+    <script src="style.js"></script>
+  </body>
+</html>
