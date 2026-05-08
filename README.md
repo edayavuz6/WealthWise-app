@@ -1,6 +1,6 @@
 # 💰 WealthWise — Personal Finance Tracker
 
-WealthWise is a clean and easy-to-use web application for tracking your income and expenses. No installation required — runs directly in the browser.
+WealthWise is a clean and easy-to-use web application for tracking your income and expenses. No installation required — runs directly in the browser
 
 LİVE CODE - 
 ---
